@@ -1,0 +1,99 @@
+model,lead_day,mae
+"Climatology baseline (same hour, +/-7 days)",1,2.805334016923923
+"Climatology baseline (same hour, +/-7 days)",2,2.7449239120643014
+"Climatology baseline (same hour, +/-7 days)",3,2.794348536849436
+"Climatology baseline (same hour, +/-7 days)",4,2.940405566895508
+"Climatology baseline (same hour, +/-7 days)",5,2.914202771409738
+"Climatology baseline (same hour, +/-7 days)",6,2.964118601803063
+"Climatology baseline (same hour, +/-7 days)",7,3.0923534735231524
+"Climatology baseline (same hour, +/-7 days)",8,3.009670357322597
+"Climatology baseline (same hour, +/-7 days)",9,2.9623692892691387
+"Climatology baseline (same hour, +/-7 days)",10,3.0512785117434507
+"Climatology baseline (same hour, +/-7 days)",11,2.9839202035452663
+"Climatology baseline (same hour, +/-7 days)",12,2.956310462450372
+"Climatology baseline (same hour, +/-7 days)",13,3.0901462285456187
+"Climatology baseline (same hour, +/-7 days)",14,3.0500732539283115
+Fourier climatology only,1,2.786603529437907
+Fourier climatology only,2,2.6832127078833192
+Fourier climatology only,3,2.755976073967635
+Fourier climatology only,4,2.855404634614577
+Fourier climatology only,5,2.789365804342928
+Fourier climatology only,6,2.864881513660492
+Fourier climatology only,7,2.9535505854199227
+Fourier climatology only,8,2.8503078392251324
+Fourier climatology only,9,2.84319080047262
+Fourier climatology only,10,2.9288364487164387
+Fourier climatology only,11,2.8558487426476318
+Fourier climatology only,12,2.872287349247345
+Fourier climatology only,13,2.9899589784302636
+Fourier climatology only,14,2.9365843548092196
+Linear (Burak's two-stage),1,1.7613231173058275
+Linear (Burak's two-stage),2,2.48320848569522
+Linear (Burak's two-stage),3,2.6855483434481697
+Linear (Burak's two-stage),4,2.8076554086238783
+Linear (Burak's two-stage),5,2.7689290138741347
+Linear (Burak's two-stage),6,2.8522996156968805
+Linear (Burak's two-stage),7,2.9451173464043037
+Linear (Burak's two-stage),8,2.8599219501961883
+Linear (Burak's two-stage),9,2.8556375467977624
+Linear (Burak's two-stage),10,2.935940584682587
+Linear (Burak's two-stage),11,2.8646709173676377
+Linear (Burak's two-stage),12,2.881930080360776
+Linear (Burak's two-stage),13,2.997315253391755
+Linear (Burak's two-stage),14,2.942252982145182
+Persistence (repeat last 24 h),1,1.7904060913705584
+Persistence (repeat last 24 h),2,2.329391041771515
+Persistence (repeat last 24 h),3,2.5093608454957224
+Persistence (repeat last 24 h),4,2.693502538071066
+Persistence (repeat last 24 h),5,2.8783090085556116
+Persistence (repeat last 24 h),6,2.9661298439859087
+Persistence (repeat last 24 h),7,2.9297461928934005
+Persistence (repeat last 24 h),8,3.0089582284851533
+Persistence (repeat last 24 h),9,3.0245596376446904
+Persistence (repeat last 24 h),10,3.2685467479674797
+Persistence (repeat last 24 h),11,3.3000000000000003
+Persistence (repeat last 24 h),12,3.1191746351283345
+Persistence (repeat last 24 h),13,3.362855691056911
+Persistence (repeat last 24 h),14,3.488374433819829
+"Random forest (as pushed, UTC midnight, depth 16)",1,2.9802202326100096
+"Random forest (as pushed, UTC midnight, depth 16)",2,2.866404405237436
+"Random forest (as pushed, UTC midnight, depth 16)",3,3.092921902229104
+"Random forest (as pushed, UTC midnight, depth 16)",4,3.084088156284444
+"Random forest (as pushed, UTC midnight, depth 16)",5,3.0205239448569348
+"Random forest (as pushed, UTC midnight, depth 16)",6,3.20274752444704
+"Random forest (as pushed, UTC midnight, depth 16)",7,3.1673893339385235
+"Random forest (as pushed, UTC midnight, depth 16)",8,3.095610326819232
+"Random forest (as pushed, UTC midnight, depth 16)",9,3.2039491225731997
+"Random forest (as pushed, UTC midnight, depth 16)",10,3.1254508455129493
+"Random forest (as pushed, UTC midnight, depth 16)",11,3.1360065780327675
+"Random forest (as pushed, UTC midnight, depth 16)",12,3.267291603963536
+"Random forest (as pushed, UTC midnight, depth 16)",13,3.184439721068938
+"Random forest (as pushed, UTC midnight, depth 16)",14,3.2346278712044834
+"Random forest (fixed, chosen depth)",1,2.9573878569661955
+"Random forest (fixed, chosen depth)",2,2.9081263135945736
+"Random forest (fixed, chosen depth)",3,2.986111501845828
+"Random forest (fixed, chosen depth)",4,3.0627682541498342
+"Random forest (fixed, chosen depth)",5,3.019518991734152
+"Random forest (fixed, chosen depth)",6,3.1040848959219023
+"Random forest (fixed, chosen depth)",7,3.1178205196532733
+"Random forest (fixed, chosen depth)",8,3.078275380510937
+"Random forest (fixed, chosen depth)",9,3.092295337665687
+"Random forest (fixed, chosen depth)",10,3.0650006239850853
+"Random forest (fixed, chosen depth)",11,3.090779628461191
+"Random forest (fixed, chosen depth)",12,3.140313306137327
+"Random forest (fixed, chosen depth)",13,3.149266468757954
+"Random forest (fixed, chosen depth)",14,3.1980693865383336
+"Random forest (fixed, notebook depth 16)",1,2.953449696775831
+"Random forest (fixed, notebook depth 16)",2,2.8262267269487102
+"Random forest (fixed, notebook depth 16)",3,3.0621421885098625
+"Random forest (fixed, notebook depth 16)",4,3.0489785422242615
+"Random forest (fixed, notebook depth 16)",5,3.0059698696722332
+"Random forest (fixed, notebook depth 16)",6,3.216829025202303
+"Random forest (fixed, notebook depth 16)",7,3.171922142929817
+"Random forest (fixed, notebook depth 16)",8,3.060788458865239
+"Random forest (fixed, notebook depth 16)",9,3.2015035890459895
+"Random forest (fixed, notebook depth 16)",10,3.130812705404264
+"Random forest (fixed, notebook depth 16)",11,3.144273058486127
+"Random forest (fixed, notebook depth 16)",12,3.2812388648271704
+"Random forest (fixed, notebook depth 16)",13,3.208414740756654
+"Random forest (fixed, notebook depth 16)",14,3.2573103166549155

@@ -1,0 +1,13 @@
+{
+  "rf": {
+    "max_depth": 6,
+    "notebook_max_depth": 16
+  },
+  "linear": {
+    "groups": [
+      "temp"
+    ],
+    "groups_name": "temp",
+    "alpha": 1000
+  }
+}
