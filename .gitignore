@@ -4,3 +4,4 @@ raw_data/era5_land/
 raw_data/sst/
 raw_data/indices/
 __pycache__/
+raw_data/final_truth/

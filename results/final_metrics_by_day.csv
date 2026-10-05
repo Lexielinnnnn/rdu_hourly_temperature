@@ -1,0 +1,99 @@
+model,day,MAE_C
+Ridge linear regression (ours),1,3.164958426685042
+Ridge linear regression (ours),2,4.410865452581878
+Ridge linear regression (ours),3,3.097933447568447
+Ridge linear regression (ours),4,3.124563106306065
+Ridge linear regression (ours),5,4.004847736877694
+Ridge linear regression (ours),6,1.756856537999396
+Ridge linear regression (ours),7,6.212224359473545
+Ridge linear regression (ours),8,6.663729276740171
+Ridge linear regression (ours),9,6.304395909186614
+Ridge linear regression (ours),10,4.481162490924078
+Ridge linear regression (ours),11,2.6918203896653012
+Ridge linear regression (ours),12,1.8881478875342168
+Ridge linear regression (ours),13,1.1279437681225946
+Ridge linear regression (ours),14,1.3824363592024163
+KNN (ours),1,3.4938333333333325
+KNN (ours),2,4.717375
+KNN (ours),3,3.4109208333333334
+KNN (ours),4,3.236316666666666
+KNN (ours),5,3.8157072916666657
+KNN (ours),6,1.6712427083333339
+KNN (ours),7,6.2021749999999995
+KNN (ours),8,6.639467708333332
+KNN (ours),9,6.260463541666667
+KNN (ours),10,4.428348958333333
+KNN (ours),11,2.5810458333333326
+KNN (ours),12,1.8751187499999993
+KNN (ours),13,1.0796604166666672
+KNN (ours),14,1.2624549999999997
+Random forest (ours),1,4.141675865511439
+Random forest (ours),2,4.814233698013093
+Random forest (ours),3,3.284867550240797
+Random forest (ours),4,2.9808753109704234
+Random forest (ours),5,3.1778118931523927
+Random forest (ours),6,1.3317650827960292
+Random forest (ours),7,6.90128167072158
+Random forest (ours),8,7.440209782486879
+Random forest (ours),9,7.147837137094581
+Random forest (ours),10,5.341828327462893
+Random forest (ours),11,3.4294519489285555
+Random forest (ours),12,2.9121693293780537
+Random forest (ours),13,1.2442605130325013
+Random forest (ours),14,3.107213783760221
+Burak's linear model (as pushed),1,2.7250797785945906
+Burak's linear model (as pushed),2,4.478582035685249
+Burak's linear model (as pushed),3,3.522223656746244
+Burak's linear model (as pushed),4,3.7388669646375488
+Burak's linear model (as pushed),5,4.642787790232283
+Burak's linear model (as pushed),6,1.7118122275335284
+Burak's linear model (as pushed),7,4.921714055258888
+Burak's linear model (as pushed),8,5.279575227483671
+Burak's linear model (as pushed),9,4.823689193687859
+Burak's linear model (as pushed),10,3.2320098816338336
+Burak's linear model (as pushed),11,1.678913106356123
+Burak's linear model (as pushed),12,1.4264209518312618
+Burak's linear model (as pushed),13,2.2426086468983915
+Burak's linear model (as pushed),14,0.7032148557046348
+Lexie's random forest (as pushed),1,4.196270007837181
+Lexie's random forest (as pushed),2,4.795606043677716
+Lexie's random forest (as pushed),3,2.724431748746456
+Lexie's random forest (as pushed),4,2.7736275910441
+Lexie's random forest (as pushed),5,3.357167810097027
+Lexie's random forest (as pushed),6,1.3301907145571623
+Lexie's random forest (as pushed),7,2.8341192177682655
+Lexie's random forest (as pushed),8,3.84208868968682
+Lexie's random forest (as pushed),9,4.500031859472948
+Lexie's random forest (as pushed),10,3.462402467262701
+Lexie's random forest (as pushed),11,1.9181366283304901
+Lexie's random forest (as pushed),12,1.921987747820367
+Lexie's random forest (as pushed),13,1.8525827262168872
+Lexie's random forest (as pushed),14,1.735178694392045
+"Baseline: same hour, last 2 yrs",1,4.10922619047619
+"Baseline: same hour, last 2 yrs",2,5.26875
+"Baseline: same hour, last 2 yrs",3,3.741666666666667
+"Baseline: same hour, last 2 yrs",4,3.1110119047619036
+"Baseline: same hour, last 2 yrs",5,3.2967261904761895
+"Baseline: same hour, last 2 yrs",6,2.0440476190476193
+"Baseline: same hour, last 2 yrs",7,7.7559523809523805
+"Baseline: same hour, last 2 yrs",8,8.381547619047618
+"Baseline: same hour, last 2 yrs",9,8.119047619047619
+"Baseline: same hour, last 2 yrs",10,6.356547619047618
+"Baseline: same hour, last 2 yrs",11,4.500892857142857
+"Baseline: same hour, last 2 yrs",12,3.147916666666666
+"Baseline: same hour, last 2 yrs",13,0.8494047619047626
+"Baseline: same hour, last 2 yrs",14,2.2514285714285713
+Baseline: repeat last 24 h,1,2.525
+Baseline: repeat last 24 h,2,4.495833333333333
+Baseline: repeat last 24 h,3,2.9458333333333333
+Baseline: repeat last 24 h,4,2.804166666666666
+Baseline: repeat last 24 h,5,4.004166666666666
+Baseline: repeat last 24 h,6,2.9250000000000003
+Baseline: repeat last 24 h,7,6.637499999999999
+Baseline: repeat last 24 h,8,7.208333333333333
+Baseline: repeat last 24 h,9,6.954166666666666
+Baseline: repeat last 24 h,10,5.229166666666667
+Baseline: repeat last 24 h,11,3.5624999999999996
+Baseline: repeat last 24 h,12,2.845833333333333
+Baseline: repeat last 24 h,13,1.9458333333333335
+Baseline: repeat last 24 h,14,0.95

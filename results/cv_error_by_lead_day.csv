@@ -1,0 +1,71 @@
+model,lead_day,mae
+Baseline: repeat last 24 h,1,1.7904060913705584
+Baseline: repeat last 24 h,2,2.329391041771515
+Baseline: repeat last 24 h,3,2.5093608454957224
+Baseline: repeat last 24 h,4,2.693502538071066
+Baseline: repeat last 24 h,5,2.8783090085556116
+Baseline: repeat last 24 h,6,2.9661298439859087
+Baseline: repeat last 24 h,7,2.9297461928934005
+Baseline: repeat last 24 h,8,3.0089582284851533
+Baseline: repeat last 24 h,9,3.0245596376446904
+Baseline: repeat last 24 h,10,3.2685467479674797
+Baseline: repeat last 24 h,11,3.3000000000000003
+Baseline: repeat last 24 h,12,3.1191746351283345
+Baseline: repeat last 24 h,13,3.362855691056911
+Baseline: repeat last 24 h,14,3.488374433819829
+"Baseline: same hour, last 2 yrs",1,3.165387962291516
+"Baseline: same hour, last 2 yrs",2,2.99965130491049
+"Baseline: same hour, last 2 yrs",3,3.054288590121504
+"Baseline: same hour, last 2 yrs",4,3.1595975344452505
+"Baseline: same hour, last 2 yrs",5,3.06836580631246
+"Baseline: same hour, last 2 yrs",6,3.1520238694370555
+"Baseline: same hour, last 2 yrs",7,3.2021863669325596
+"Baseline: same hour, last 2 yrs",8,3.106639585879646
+"Baseline: same hour, last 2 yrs",9,3.130250197713711
+"Baseline: same hour, last 2 yrs",10,3.181413327526132
+"Baseline: same hour, last 2 yrs",11,3.100176144942124
+"Baseline: same hour, last 2 yrs",12,3.1500107843842122
+"Baseline: same hour, last 2 yrs",13,3.2141405342624854
+"Baseline: same hour, last 2 yrs",14,3.186487166582788
+KNN,1,2.4018863832487307
+KNN,2,2.5688733895319578
+KNN,3,2.7489011449421237
+KNN,4,2.86276828680203
+KNN,5,2.82998009562154
+KNN,6,2.8727509436336183
+KNN,7,2.935704302030457
+KNN,8,2.97094562154001
+KNN,9,3.0258166582788117
+KNN,10,3.0391315294715446
+KNN,11,3.0081506668344233
+KNN,12,3.061916280825365
+KNN,13,3.1831127540650406
+KNN,14,3.2139758052340213
+Random forest,1,2.81045412871496
+Random forest,2,2.846783264345672
+Random forest,3,2.9317783636720134
+Random forest,4,3.00351275966779
+Random forest,5,2.9794462314485397
+Random forest,6,3.079850479275683
+Random forest,7,3.0750986296023766
+Random forest,8,3.055449585245095
+Random forest,9,3.1026226866139757
+Random forest,10,3.0596385307024074
+Random forest,11,3.100806660698596
+Random forest,12,3.1629146119587386
+Random forest,13,3.1850686044045764
+Random forest,14,3.235809278721931
+Ridge linear regression,1,2.678037385452441
+Ridge linear regression,2,2.682002555615663
+Ridge linear regression,3,2.845424331455586
+Ridge linear regression,4,2.902837036468864
+Ridge linear regression,5,2.826842218517834
+Ridge linear regression,6,2.971575559641615
+Ridge linear regression,7,2.9839849204765745
+Ridge linear regression,8,2.9191646237550004
+Ridge linear regression,9,2.9821161647127714
+Ridge linear regression,10,3.016333044199815
+Ridge linear regression,11,3.0646218449618376
+Ridge linear regression,12,3.114053153459153
+Ridge linear regression,13,3.1784259655778246
+Ridge linear regression,14,3.1201235670168863

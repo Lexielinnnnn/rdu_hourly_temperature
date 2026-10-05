@@ -26,7 +26,7 @@ Not done: tropical cyclone tracks (NHC best-track has no 2025-26 file yet), MJO 
 4. Poison test: all data from a chosen time onward is overwritten with garbage, and the features and training rows for that origin must not change. It passes for the real forecast and for backtest origins in 2023 and 2025. The test also checks that the poison does change later features, so it cannot pass by accident.
 5. The backtest asserts that no training target reaches the test origin.
 
-Sep 17-30 2026 actuals exist in `raw_data/2026.csv`; they are used only for final scoring, never for features or tuning.
+The real Sep 17-30 2026 RDU observations are downloaded separately (`experiments/fetch_final_truth.sh`) and are used only by `score_final.py` for final scoring, never for features or tuning. (`raw_data/2026.csv` ends at the cutoff, it does not contain them.)
 
 ## 3. Features and model choice
 

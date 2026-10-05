@@ -1,0 +1,2 @@
+forecast rows: 336; features built from data before 2026-09-17 04:00:00+00:00
+features with missing values at forecast time (median-imputed): none

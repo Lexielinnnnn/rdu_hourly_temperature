@@ -1,0 +1,17 @@
+{
+  "ridge": {
+    "features": "base + ocean temp",
+    "alpha": 10000.0
+  },
+  "knn": {
+    "features": "compact",
+    "k": 4000
+  },
+  "rf": {
+    "features": "base (RDU + year-prior)",
+    "max_depth": 6,
+    "min_samples_leaf": 20,
+    "n_estimators": 60
+  },
+  "other_model": "knn"
+}
