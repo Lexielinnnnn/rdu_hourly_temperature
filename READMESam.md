@@ -70,6 +70,23 @@ Needs pandas, numpy and scikit-learn.
 | `PLAN.md` | data rationale, results, caveats, task split |
 | `Project1_Action_Plan.docx` | teammate action plan |
 
+## Action plan and division of labor (due Wed Oct 7)
+
+| | Sam: data, features, KNN | Burak: linear regression, evaluation | Lexie: cleaning, RF, writeup, slides |
+|---|---|---|---|
+| **Mon Oct 5** | Make `pipeline.py` the single source of data and features (move to `src/`, keep the leakage test passing). Tune KNN (k, feature subset) with time-ordered CV over many forecast dates, not just Sep 17. | Final ridge / lasso / OLS comparison; LassoCV to see which feature groups survive. Collinearity and residual checks (Week 3). | Fix `clean_data.ipynb` (nearest-:51 rule, fill gaps) and re-export the cleaned RDU file. Rerun `random_forest.ipynb` as an extra model. Start the writeup outline. |
+| **Tue Oct 6** | Feature-group ablation table; test different features for short vs long lead. Final KNN predictions to `predictions_knn.csv`. | Scoring script: all models on the real Sep 17-30 data (MAE, RMSE, R2) vs the two baselines, plus per-day error plot. Final predictions to `predictions_linreg.csv`. | Build the slide deck and merge everyone's writeup sections. Collect figures from Sam and Burak. |
+| **Wed Oct 7** | Clean run from a fresh clone; README with run order. | Check slide numbers match the results table. | Proofread writeup and slides; submit. |
+
+**Slides** (required: inputs, pipeline, features, models, evaluation approach, performance):
+- Lexie: title and problem, data pipeline and cleaning, random forest (extra model), what did not work, conclusion.
+- Sam: inputs (RDU plus the alternative data groups and why each), feature design, leakage protection, KNN model.
+- Burak: linear regression, evaluation approach (backtest on Sep 17-30 of 2022-2025, baselines), performance on the real Sep 17-30 2026.
+
+**Writeup (2-4 pages):** each person writes their own section in their own words (Sam: data and features; Burak: linear model and evaluation; Lexie: introduction, cleaning, how we applied course ideas). Lexie merges and edits on Tuesday. AI is allowed for code only; writing and slides must be our own.
+
+**Open questions for Monday:** Celsius or Fahrenheit for the grader? Do weather-model forecasts issued before Sep 17 count as allowed data?
+
 ## Known caveats and not done
 
 - `clean_data.ipynb` keeps only `:51` observations; KDCA reports at `:52` and 2026 files are sub-hourly, so exact-minute
