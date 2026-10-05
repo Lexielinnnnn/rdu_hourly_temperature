@@ -1,3 +1,6 @@
-raw_data/dca/
+raw_data/stations/
 raw_data/era5_wind/
+raw_data/era5_land/
+raw_data/sst/
+raw_data/indices/
 __pycache__/

@@ -4,54 +4,66 @@ Branch: `sam-teshome`. Deliverables due **Wed Oct 7**: presentation, code repo, 
 Task: forecast 336 hourly RDU temperatures from 12am Sep 17 to 11pm Sep 30 using only data before Sep 17 12am.
 Requirement: 1 linear regression + 1 other model.
 
-## 1. Two alternative data sets (beyond `raw_data/` RDU)
+## 1. Alternative data sets (all downloaded by `bash experiments/fetch_alt_data.sh`, about 650 MB, gitignored)
 
-| # | Data set | Source | Why |
-|---|----------|--------|-----|
-| 1 | **Washington DC (KDCA) hourly obs**: temp, dew point, sea-level pressure | NOAA GHCNh, station USW00013743 (same format as the RDU files) | Upstream "hotspot": fronts usually reach DC before RDU. RDU-DC pressure/temperature differences capture frontal position. |
-| 2 | **Mid-Atlantic winds + pressure**: 100 m wind (u/v) and MSLP at Chesapeake Bay mouth, offshore Cape Hatteras, west of the Blue Ridge (Shenandoah), Charlotte, DC | ERA5 reanalysis via Open-Meteo archive API (free, no key) | Wind direction = air-mass origin (NW continental dry vs SE Atlantic humid). Pressure gradients N-S (DC - Hatteras) and coast-inland (Bay - Shenandoah). |
+| Group | Data | Source | Why it should matter |
+|---|---|---|---|
+| corridor | Hourly obs at DC, Greensboro, Charlotte, Roanoke, Norfolk, Charleston WV, Wilmington NC | NOAA GHCNh (same format as RDU) | Upstream stations show fronts and the Appalachian wedge (cool air dammed east of the mountains) before RDU. |
+| wind | 100 m wind and sea-level pressure at Chesapeake Bay, Hatteras, Shenandoah, Charlotte, DC | ERA5 via Open-Meteo | Wind direction tells which air mass is arriving; N-S and coast-inland pressure gradients. |
+| land | Soil moisture (shallow and deep) at RDU, Roanoke, Wilmington; RDU cloud cover | ERA5-Land via Open-Meteo | Land surface is the main source of predictability from 5 to 14 days; dry soil means bigger day-night swings. NC was in drought this September. |
+| sst | Daily sea-surface temperature: Gulf Stream, Gulf of Mexico, SC bight, mid-Atlantic bight | NOAA OISST | Warm water feeds humid southeasterly air and tropical systems. |
+| indices | NAO, AO, PNA (daily) and Nino 3.4 anomaly (monthly) | NOAA CPC | Large-scale patterns are the only known source of skill at 10-30 days. |
+| yearprior | RDU at the target hour 1 and 2 years earlier (+-3 day smoothing) | RDU data already in repo | The "look at the year prior" idea. |
 
-`bash experiments/fetch_alt_data.sh` downloads both (about 80 MB, gitignored).
-A third source, the **year-prior RDU series** (same hour 365 and 730 days earlier, +-3 day smoothing), needs no download and is built from the RDU data already in the repo.
+Not done: tropical cyclone tracks (NHC best-track has no 2025-26 file yet), MJO (BoM file blocked), upper-air heights.
 
-## 2. Features (all are known at forecast origin Sep 16 11pm, so no leakage)
+## 2. Data leakage protection (cutoff = 12am Sep 17 2026)
 
-- **RDU state**: last-hour temp, 24 h mean temp, 7 d mean temp, 24 h mean dew point and RH, last pressure, 24 h pressure change, 24 h mean wind speed.
-- **Year prior** (target-hour): `yp1_t_sm7`, `yp2_t_sm7`, their mean `yp_mean_sm7`. This is the "look at last year" idea.
-- **DC**: 24 h mean temp and dew point, 24 h pressure change, DC-minus-RDU temp and pressure.
-- **Wind and gradients**: 24 h mean u/v wind at 5 points, N-S and coast-inland pressure gradients.
-- **Calendar and horizon**: hours ahead (`lead`), sin/cos of hour of day and day of year.
+`experiments/pipeline.py` enforces it and `experiments/test_no_leakage.py` proves it:
+1. Every source is clipped to strictly before the cutoff as soon as it is loaded (2026 station files and CPC files run past Sep 30).
+2. Daily and monthly sources are shifted by a 2-day or 2-month publication lag, so a value is only used after it could really have been downloaded.
+3. All features are trailing windows ending 1 hour before the forecast origin.
+4. Poison test: all data from a chosen time onward is overwritten with garbage, and the features and training rows for that origin must not change. It passes for the real forecast and for backtest origins in 2023 and 2025. The test also checks that the poison does change later features, so it cannot pass by accident.
+5. The backtest asserts that no training target reaches the test origin.
 
-## 3. Model choice
+Sep 17-30 2026 actuals exist in `raw_data/2026.csv`; they are used only for final scoring, never for features or tuning.
 
-**Model 1: linear regression** (ridge, alpha=1, scaled features). Required, and it was the strongest model.
-**Model 2: KNN regressor.** I checked the 520 midterm material (Formula Reference NEIGHBORS, Week 5, quickref R3/R4). The course covers linear/ridge/lasso, KNN, SVM, logistic and time series (AR, seasonal naive). Nothing else there beats KNN here. KNN is the natural "analog forecast" (find the past situations most like today, average what happened next) and fits the geospatial idea. Random forest is already in the repo (`random_forest.ipynb`); keep it as an extra comparison, not as the required model.
+## 3. Features and model choice
 
-### Backtest evidence (`experiments/backtest.py`)
-Repeat the real task on Sep 17-30 of 2022-2025, training only on earlier origins. Mean absolute error in degrees C, average of the 4 years:
+- **Features**: RDU state (last, 24 h and 7 d mean temperature, dew point, humidity, pressure change, wind), year-prior, plus each group above, plus hours ahead and sin/cos of hour of day and day of year.
+- **Model 1: ridge linear regression** (required; scaled features).
+- **Model 2: KNN regressor, k=300** on a small feature set. I read the 520 midterm material (Formula Reference NEIGHBORS, Week 5, quickref); nothing there beats KNN for an "analog forecast". The random forest already in the repo stays as an extra comparison.
 
-| Model / features | MAE | Day 1 | Day 2-3 | Day 4-14 |
+### Backtest (`experiments/backtest.py`): mean absolute error in C, Sep 17-30 of 2022-2025
+
+| Model and features | MAE | Day 1 | Day 2-3 | Day 4-14 |
 |---|---|---|---|---|
-| Baseline: same hour last 2 yrs | 3.12 | 3.35 | 2.63 | 3.19 |
-| **Ridge LinReg, RDU + year-prior** | **3.12** | **2.10** | 2.19 | 3.38 |
-| **KNN k=300, compact features** | **3.12-3.14** | 2.5-2.75 | **2.12** | 3.34 |
+| Baseline: same hour last 2 years | 3.12 | 3.35 | 2.63 | 3.19 |
+| Baseline: repeat last 24 h | 3.93 | 2.28 | 3.01 | 4.25 |
 | Ridge, RDU only | 3.17 | 2.18 | 2.21 | 3.44 |
-| Ridge, + DC + wind | 3.20 | 2.33 | 2.31 | 3.45 |
-| Random forest, RDU only | 3.35 | 2.64 | 2.41 | 3.58 |
-| KNN k=50, all features | 3.17 (RDU only) / 4.22 (+DC+wind) | | | |
-| Repeat last 24 h | 3.93 | 2.28 | 3.01 | 4.25 |
+| Ridge, + year-prior | 3.12 | 2.10 | 2.19 | 3.38 |
+| **Ridge, + land (soil, cloud)** | **3.02** | **1.96** | 2.16 | 3.27 |
+| **Ridge, + wind** | **3.03** | 2.25 | 2.13 | 3.26 |
+| Ridge, + corridor stations | 3.23 | 2.14 | 2.30 | 3.50 |
+| Ridge, + sst | 3.27 | 2.13 | 2.34 | 3.55 |
+| Ridge, + indices | 3.40 | 2.12 | 2.51 | 3.68 |
+| Ridge, all groups | 3.44 | 2.02 | 2.61 | 3.72 |
+| KNN k=300, compact | 3.12 | 2.75 | 2.12 | 3.34 |
+| **KNN, compact + DC temperature** | **3.03** | 2.74 | 2.09 | 3.23 |
+| KNN, compact + indices | 3.25 | **1.97** | 2.16 | 3.57 |
+| KNN, compact + sst / + soil | 3.18 / 3.41 | | | |
+| Average of ridge + KNN | 3.05 | 2.23 | **1.98** | 3.32 |
 
-### What this tells us (be honest in the writeup)
-1. **Year-prior features help** the linear model (3.17 -> 3.12; day-1 error 2.18 -> 2.10) but only modestly. Test-year variance (2.0 to 4.4) is much larger than the gap between models, so with 4 test seasons these differences are within noise.
-2. **DC and wind did not help overall.** They are informative at lead 0-3 days physically, but they are measured at one instant (origin) and a 14-day forecast from a single origin has no way to know the future weather, so most of the 14 days is basically climatology. Adding many correlated features hurt KNN badly (4.22) because distance gets diluted. This is a legitimate result for the slides: report it as "tested, did not help, and why".
-3. **KNN needs few features and large k.** k=25 -> 3.34, k=100 -> 3.29, k=300 -> 3.14. Tune k with time-ordered CV (not random K-fold; the Week 4 time-series lesson).
-4. Recommendation: submit **ridge LinReg (RDU + year-prior [+ DC if it survives tuning])** and **KNN (compact features, k tuned around 200-500)**. Optionally average the two; the errors are not identical across years (e.g. KNN wins 2025, LinReg wins 2024).
-5. **Biggest remaining lever** (untested): model the diurnal cycle and a smoothed climatology separately, and predict the *anomaly*. Day 4-14 error is about 3.3 C for every model, which is roughly the day-to-day weather noise. Nobody has tried predicting the residual from climatology; I suggest this for Monday.
+### What this tells us (say this honestly in the writeup)
+1. Best single changes are small: soil/cloud and wind help the linear model (3.12 to about 3.02) and DC temperature helps KNN (3.12 to 3.03). Year-to-year swings (2.0 to 4.4) are bigger than these gaps, and there are only 4 test seasons, so treat them as suggestive.
+2. **Adding everything hurts** (all groups 3.44): many correlated features overfit with only about 1,900 training days. Add groups one at a time, keep few features, and use Lasso or ridge to prune.
+3. Short range is where the data helps: soil/cloud cut day-1 error to 1.96, and the climate indices cut KNN day-1 error to 1.97, but indices hurt days 4-14. A model that uses different feature sets for short and long lead (or blends by lead) is the obvious next idea.
+4. Days 4-14 stay near 3.2-3.4 C for every model, about the same as the year-prior baseline; that is close to the natural day-to-day noise.
+5. The ridge + KNN average (3.05) is the most robust: it wins in 2022 and 2023 and has the best days 2-3.
 
-### Important data caveats found
-- `clean_data.ipynb` keeps only :51 observations. KDCA reports at :52, and RDU 2026 has gaps; `hourly()` in `experiments/backtest.py` instead takes the report closest to :51 each hour. DC coverage for Jun-Sep 2026 is 30-90% missing under an exact-minute filter. Use the nearest-minute approach.
-- `raw_data/2026.csv` already contains Sep 17-30 2026 observations. **Use those only for final scoring**, never for training or tuning, and say so in the writeup.
-- The cleaned file is in Celsius. Check whether the grader wants Fahrenheit.
+### Data caveats
+- `clean_data.ipynb` keeps only `:51` observations; KDCA reports at `:52` and 2026 files are sub-hourly, so exact-minute filtering drops hours. `hourly()` in `pipeline.py` takes the report nearest `:51`.
+- Cleaned RDU data is in Celsius; confirm whether the grader wants Fahrenheit.
 
 ## 4. Split of remaining work (Mon Oct 5 / Tue Oct 6, then Wed Oct 7 due)
 
@@ -75,5 +87,6 @@ Owners are suggestions; adjust to taste.
 ## 5. Reproduce
 ```bash
 bash experiments/fetch_alt_data.sh
-python -W ignore experiments/backtest.py   # about 4 minutes; writes experiments/results/backtest_results.csv
+python -W ignore experiments/test_no_leakage.py   # must say ALL LEAKAGE TESTS PASSED
+python -W ignore experiments/backtest.py          # writes experiments/results/backtest_results.csv
 ```
