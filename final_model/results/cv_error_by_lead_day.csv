@@ -27,20 +27,20 @@ Fourier climatology only,11,2.8558487426476318
 Fourier climatology only,12,2.872287349247345
 Fourier climatology only,13,2.9899589784302636
 Fourier climatology only,14,2.9365843548092196
-Linear (Burak's two-stage),1,1.7613231173058275
-Linear (Burak's two-stage),2,2.48320848569522
-Linear (Burak's two-stage),3,2.6855483434481697
-Linear (Burak's two-stage),4,2.8076554086238783
-Linear (Burak's two-stage),5,2.7689290138741347
-Linear (Burak's two-stage),6,2.8522996156968805
-Linear (Burak's two-stage),7,2.9451173464043037
-Linear (Burak's two-stage),8,2.8599219501961883
-Linear (Burak's two-stage),9,2.8556375467977624
-Linear (Burak's two-stage),10,2.935940584682587
-Linear (Burak's two-stage),11,2.8646709173676377
-Linear (Burak's two-stage),12,2.881930080360776
-Linear (Burak's two-stage),13,2.997315253391755
-Linear (Burak's two-stage),14,2.942252982145182
+Linear (two-stage),1,1.7613231173058275
+Linear (two-stage),2,2.48320848569522
+Linear (two-stage),3,2.6855483434481697
+Linear (two-stage),4,2.8076554086238783
+Linear (two-stage),5,2.7689290138741347
+Linear (two-stage),6,2.8522996156968805
+Linear (two-stage),7,2.9451173464043037
+Linear (two-stage),8,2.8599219501961883
+Linear (two-stage),9,2.8556375467977624
+Linear (two-stage),10,2.935940584682587
+Linear (two-stage),11,2.8646709173676377
+Linear (two-stage),12,2.881930080360776
+Linear (two-stage),13,2.997315253391755
+Linear (two-stage),14,2.942252982145182
 Persistence (repeat last 24 h),1,1.7904060913705584
 Persistence (repeat last 24 h),2,2.329391041771515
 Persistence (repeat last 24 h),3,2.5093608454957224

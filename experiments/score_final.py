@@ -2,7 +2,7 @@
 
 Run this ONCE, after model_selection.py and final_forecast.py.  The real observations are used here and
 nowhere else; do not tune anything afterwards (that would turn the test set into a validation set).
-Teammates' models are scored as pushed (burak: rdu_linear_predictions.csv; lexie: rdu_random_forest_predictions.csv).
+The pushed models are scored as they are (rdu_linear_predictions.csv, rdu_random_forest_predictions.csv).
 Run from repo root:  python -W ignore experiments/score_final.py
 """
 import json
@@ -44,13 +44,10 @@ preds = {"Ridge linear regression (ours)": load_pred("predictions_ridge.csv"),
          "KNN (ours)": load_pred("predictions_knn.csv"),
          "Random forest (ours)": load_pred("predictions_rf.csv")}
 extra = {}
-try:
-    extra["Burak's linear model (as pushed)"] = load_pred(subprocess.run(
-        ["git", "show", "origin/burak:rdu_linear_predictions.csv"], capture_output=True, text=True, check=True).stdout, True)
-except Exception as e:
-    print("burak predictions not available:", e)
+if Path("rdu_linear_predictions.csv").exists():
+    extra["Linear model (as pushed)"] = load_pred("rdu_linear_predictions.csv")
 if Path("rdu_random_forest_predictions.csv").exists():
-    extra["Lexie's random forest (as pushed)"] = load_pred("rdu_random_forest_predictions.csv")
+    extra["Random forest (as pushed)"] = load_pred("rdu_random_forest_predictions.csv")
 
 S = P.load_sources()
 O, Y, G = P.build_features(S)

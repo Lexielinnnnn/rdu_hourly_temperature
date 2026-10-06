@@ -95,7 +95,7 @@ win = pd.DataFrame({
     "MOS (ECMWF + station)": frozen,
     "Raw ECMWF": D.nwp_path(mm.CUTOFF, LEAD),
     "Raw ECMWF + climatology after day 11": final.raw_nwp(mm.CUTOFF),
-    "Random forest": by_hour(fva, "Random forest (Lexie, latest push)", 0),
+    "Random forest": by_hour(fva, "Random forest (latest push)", 0),
     "Station-only linear": by_hour("rdu_linear_predictions.csv", "predicted_temperature"),
     "Ridge + alternative data": by_hour(sam, "Ridge linear regression (ours)", 0),
     "KNN analogs": by_hour(sam, "KNN (ours)", 0),

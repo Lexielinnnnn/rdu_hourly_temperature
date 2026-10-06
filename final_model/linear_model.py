@@ -1,4 +1,4 @@
-"""Burak's two-stage linear model (from linear_regression.ipynb on branch `burak`, commit 71c7270).
+"""The two-stage linear model (from linear_regression.ipynb, commit 71c7270).
 
 Stage 1: plain linear regression on day-of-year x hour-of-day Fourier terms = the "normal" temperature.
 Stage 2: ridge regression predicting the departure from normal at each lead hour, from the weather at the forecast origin,

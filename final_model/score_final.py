@@ -39,24 +39,21 @@ def load_pred(src, text=False):
     return pd.Series(df["predicted_temperature"].to_numpy(), index=pd.to_datetime(df["hour_local"], utc=True)).reindex(hours).to_numpy()
 
 
-P = {"Random forest (Lexie's, fixed)": load_pred("final_model/predictions/rf_predictions.csv"),
-     "Linear (Burak's two-stage)": load_pred("final_model/predictions/linear_predictions.csv")}
-P["Average of the two"] = (P["Random forest (Lexie's, fixed)"] + P["Linear (Burak's two-stage)"]) / 2
+P = {"Random forest (fixed)": load_pred("final_model/predictions/rf_predictions.csv"),
+     "Linear (two-stage)": load_pred("final_model/predictions/linear_predictions.csv")}
+P["Average of the two"] = (P["Random forest (fixed)"] + P["Linear (two-stage)"]) / 2
 
 # reference rows: the models exactly as pushed to GitHub, and baselines
 ref = {}
-if Path("rdu_random_forest_predictions.csv").exists():      # Lexie's latest push (d29c7ed: local-midnight fix, depth 16)
-    ref["Random forest (Lexie, latest push)"] = load_pred("rdu_random_forest_predictions.csv")
-try:                                                       # her first push (854e0d9: UTC-midnight training)
-    ref["Random forest (Lexie, original push)"] = load_pred(subprocess.run(
+if Path("rdu_random_forest_predictions.csv").exists():      # latest push (d29c7ed: local-midnight fix, depth 16)
+    ref["Random forest (latest push)"] = load_pred("rdu_random_forest_predictions.csv")
+try:                                                       # first push (854e0d9: UTC-midnight training)
+    ref["Random forest (original push)"] = load_pred(subprocess.run(
         ["git", "show", "854e0d9:rdu_random_forest_predictions.csv"], capture_output=True, text=True, check=True).stdout, True)
 except Exception as e:
     print("original random forest predictions not available:", e)
-try:
-    ref["Linear (Burak, as pushed)"] = load_pred(subprocess.run(["git", "show", "origin/burak:rdu_linear_predictions.csv"],
-                                                                capture_output=True, text=True, check=True).stdout, True)
-except Exception as e:
-    print("burak's pushed predictions not available:", e)
+if Path("rdu_linear_predictions.csv").exists():
+    ref["Linear (two-stage, as pushed)"] = load_pred("rdu_linear_predictions.csv")
 data = R.load()
 hourly = R.hourly_grid(data)
 temp_local = pd.Series(hourly["temperature"].to_numpy(), index=hourly.index.tz_convert(R.TZ))
@@ -103,8 +100,8 @@ save(fig, "fig_final_model_comparison.png", top=0.93)
 
 fig, ax = plt.subplots(figsize=(13, 5.4))
 ax.plot(hours_local, a, color=INK, lw=2.2, label="Actual")
-ax.plot(hours_local, P["Linear (Burak's two-stage)"], color=BLUE, lw=2, label="Linear (Burak)")
-ax.plot(hours_local, P["Random forest (Lexie's, fixed)"], color=ORANGE, lw=2, label="Random forest (Lexie)")
+ax.plot(hours_local, P["Linear (two-stage)"], color=BLUE, lw=2, label="Linear (two-stage)")
+ax.plot(hours_local, P["Random forest (fixed)"], color=ORANGE, lw=2, label="Random forest")
 ax.set_ylabel("Temperature (°C)"); ax.set_title("RDU hourly temperature, Sep 17-30 2026: forecast vs actual", loc="left")
 fig.autofmt_xdate()
 legend_below(ax, 3, offset=-0.32)
@@ -112,7 +109,7 @@ save(fig, "fig_final_forecast_vs_actual.png")
 
 dd = pd.DataFrame(day_rows)
 fig, ax = plt.subplots(figsize=(10, 5.4))
-for name, c, ls in [("Linear (Burak's two-stage)", BLUE, "-"), ("Random forest (Lexie's, fixed)", ORANGE, "-"),
+for name, c, ls in [("Linear (two-stage)", BLUE, "-"), ("Random forest (fixed)", ORANGE, "-"),
                     ("Baseline: same hour, +/-7 days of prior years", GREY, "--")]:
     s = dd[dd.model == name]
     ax.plot(s.day, s.MAE_C, ls, color=c, lw=2.5, marker="o", ms=5, label=name)

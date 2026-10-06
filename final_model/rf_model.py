@@ -1,4 +1,4 @@
-"""Lexie's random forest (from random_forest.ipynb, commit 854e0d9) with ONE fix.
+"""The random forest (from random_forest.ipynb, commit 854e0d9) with ONE fix.
 
 Fix: the pushed notebook built its training forecasts at UTC midnight (8pm Raleigh time in September), but the real
 forecast starts at midnight Raleigh time.  In training "lead hour 0" therefore meant 8pm and the "last hour" features

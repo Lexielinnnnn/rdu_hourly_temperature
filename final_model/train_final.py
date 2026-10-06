@@ -19,7 +19,7 @@ data = R.load()
 hourly = R.hourly_grid(data)
 hours_local = pd.date_range(R.CUTOFF, periods=R.HORIZON, freq="h").tz_convert(R.TZ)
 
-# ---- Lexie's random forest, training forecasts at local midnight ----
+# ---- Random forest, training forecasts at local midnight ----
 X, y = RF.make_training_data(data, R.CUTOFF, align="local", every=1)
 rf = RF.make_model(max_depth=chosen["rf"]["max_depth"]).fit(X, y)
 Xf = RF.make_features(data, R.CUTOFF)
@@ -29,7 +29,7 @@ pd.Series(rf[-1].feature_importances_, index=Xf.columns, name="importance").sort
     "final_model/results/rf_importances.csv")
 print(f"random forest: depth {chosen['rf']['max_depth']}, {len(X):,} training rows, last target {X.index.max().tz_convert(R.TZ)}")
 
-# ---- Burak's two-stage linear model ----
+# ---- Two-stage linear model ----
 lin = LM.LinearForecaster(hourly, chosen["linear"]["groups"], alpha=chosen["linear"]["alpha"]).fit(R.CUTOFF)
 pd.DataFrame({"hour_local": hours_local, "predicted_temperature": lin.predict(R.CUTOFF)}).to_csv(
     "final_model/predictions/linear_predictions.csv", index=False)

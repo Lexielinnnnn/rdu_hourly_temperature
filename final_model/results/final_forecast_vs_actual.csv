@@ -1,4 +1,4 @@
-,actual,"Random forest (Lexie's, fixed)",Linear (Burak's two-stage),Average of the two,"Random forest (Lexie, latest push)","Random forest (Lexie, original push)","Linear (Burak, as pushed)",Baseline: Fourier climatology only,"Baseline: same hour, +/-7 days of prior years",Baseline: repeat last 24 h
+,actual,Random forest (fixed),Linear (two-stage),Average of the two,Random forest (latest push),Random forest (original push),"Linear (two-stage, as pushed)",Baseline: Fourier climatology only,"Baseline: same hour, +/-7 days of prior years",Baseline: repeat last 24 h
 2026-09-17 00:00:00-04:00,20.6,20.56627034641451,20.58420630297879,20.57523832469665,20.385220332383657,21.01142776200215,20.663191091992708,19.560566673105406,20.039024390243906,20.0
 2026-09-17 01:00:00-04:00,20.0,20.54972064763986,20.54424533592857,20.546982991784212,20.269189989377345,20.89234337981514,20.512009781650864,19.36604127669394,19.651219512195123,19.4
 2026-09-17 02:00:00-04:00,18.9,20.24499556988773,20.153909255722144,20.199452412804938,20.0800955051421,20.29905173171124,20.07391271825462,18.963608782092212,19.23048780487805,18.9

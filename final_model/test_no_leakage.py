@@ -30,7 +30,7 @@ for T in origins:
     fa = RF.make_model(n_estimators=10, max_samples=0.3).fit(Xa, ya).predict(RF.make_features(clean, T))
     fb = RF.make_model(n_estimators=10, max_samples=0.3).fit(Xb, yb).predict(RF.make_features(bad, T))
     np.testing.assert_allclose(fa, fb, rtol=0, atol=1e-9)   # threads sum trees in a different order: 1e-15 noise
-    # --- Burak's linear model ---
+    # --- two-stage linear model ---
     la = LM.LinearForecaster(R.hourly_grid(clean)).fit(T)
     lb = LM.LinearForecaster(R.hourly_grid(bad)).fit(T)
     np.testing.assert_allclose(la.predict(T.tz_convert(R.TZ)), lb.predict(T.tz_convert(R.TZ)), rtol=0, atol=1e-9)

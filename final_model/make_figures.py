@@ -33,13 +33,13 @@ def curve(csv, xlabel, title, best, name, log=False, fmt=lambda v: f"{v:g}", ext
 
 
 curve(R + "cv_rf_depth.csv", "Maximum tree depth   [more complex model on the right]",
-      "Lexie's random forest: training vs validation error", chosen["rf"]["max_depth"], "fig_cv_rf_depth.png",
+      "Random forest: training vs validation error", chosen["rf"]["max_depth"], "fig_cv_rf_depth.png",
       fmt=lambda v: f"depth {v:g}", extra=" Notebook depth was 16.")
 curve(R + "cv_linear_alpha.csv", "Ridge penalty (alpha), log scale   [more complex model on the left]",
-      "Burak's linear model: training vs validation error", chosen["linear"]["alpha"], "fig_cv_linear_alpha.png", log=True,
+      "Linear model: training vs validation error", chosen["linear"]["alpha"], "fig_cv_linear_alpha.png", log=True,
       extra=" Flat curve = the penalty barely matters.")
 
-# ---- Burak's feature-group check ----
+# ---- Feature-group check ----
 d = pd.read_csv(R + "cv_linear_groups.csv").sort_values("val_mae_mean", ascending=False)
 fig, ax = plt.subplots(figsize=(10, 4.2))
 ax.barh(d["hyper"], d["val_mae_mean"], xerr=d["val_mae_std"].fillna(0), height=0.55,
@@ -70,7 +70,7 @@ for i, (v, sd) in enumerate(zip(c["mae_mean"], c["mae_std"])):
     ax.text(v + sd + 0.05, i, f"{v:.2f}", va="center", color=INK, fontsize=12, fontweight="bold")
 ax.set_xlim(0, c["mae_mean"].max() + c["mae_std"].max() + 0.8); ax.grid(axis="y", visible=False)
 ax.set_xlabel("Validation MAE (°C): mean of 4 yearly folds ±1 std"); bar_title(fig, "Cross-validation: final candidates vs baselines")
-footnote(fig, "Hatched = random forest trained the way the notebook was first pushed (UTC-midnight forecasts, before Lexie's fix).")
+footnote(fig, "Hatched = random forest trained the way the notebook was first pushed (UTC-midnight forecasts, before the time-alignment fix).")
 save(fig, "fig_cv_model_comparison.png", top=0.93)
 
 # ---- the random forest alignment fix ----
@@ -90,7 +90,7 @@ save(fig, "fig_cv_rf_alignment.png", top=0.88)
 # ---- error by lead day ----
 l = pd.read_csv(R + "cv_error_by_lead_day.csv")
 fig, ax = plt.subplots(figsize=(10, 5.4))
-for model, col, ls in [("Linear (Burak's two-stage)", BLUE, "-"), ("Random forest (fixed, chosen depth)", ORANGE, "-"),
+for model, col, ls in [("Linear (two-stage)", BLUE, "-"), ("Random forest (fixed, chosen depth)", ORANGE, "-"),
                        ("Climatology baseline (same hour, +/-7 days)", GREY, "--")]:
     s = l[l.model == model]
     ax.plot(s.lead_day, s.mae, ls, color=col, lw=2.5, marker="o", ms=5, label=model)

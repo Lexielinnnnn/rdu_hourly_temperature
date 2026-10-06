@@ -41,34 +41,34 @@ Random forest (ours),11,3.4294519489285555
 Random forest (ours),12,2.9121693293780537
 Random forest (ours),13,1.2442605130325013
 Random forest (ours),14,3.107213783760221
-Burak's linear model (as pushed),1,2.7250797785945906
-Burak's linear model (as pushed),2,4.478582035685249
-Burak's linear model (as pushed),3,3.522223656746244
-Burak's linear model (as pushed),4,3.7388669646375488
-Burak's linear model (as pushed),5,4.642787790232283
-Burak's linear model (as pushed),6,1.7118122275335284
-Burak's linear model (as pushed),7,4.921714055258888
-Burak's linear model (as pushed),8,5.279575227483671
-Burak's linear model (as pushed),9,4.823689193687859
-Burak's linear model (as pushed),10,3.2320098816338336
-Burak's linear model (as pushed),11,1.678913106356123
-Burak's linear model (as pushed),12,1.4264209518312618
-Burak's linear model (as pushed),13,2.2426086468983915
-Burak's linear model (as pushed),14,0.7032148557046348
-Lexie's random forest (as pushed),1,4.196270007837181
-Lexie's random forest (as pushed),2,4.795606043677716
-Lexie's random forest (as pushed),3,2.724431748746456
-Lexie's random forest (as pushed),4,2.7736275910441
-Lexie's random forest (as pushed),5,3.357167810097027
-Lexie's random forest (as pushed),6,1.3301907145571623
-Lexie's random forest (as pushed),7,2.8341192177682655
-Lexie's random forest (as pushed),8,3.84208868968682
-Lexie's random forest (as pushed),9,4.500031859472948
-Lexie's random forest (as pushed),10,3.462402467262701
-Lexie's random forest (as pushed),11,1.9181366283304901
-Lexie's random forest (as pushed),12,1.921987747820367
-Lexie's random forest (as pushed),13,1.8525827262168872
-Lexie's random forest (as pushed),14,1.735178694392045
+Linear model (as pushed),1,2.7250797785945906
+Linear model (as pushed),2,4.478582035685249
+Linear model (as pushed),3,3.522223656746244
+Linear model (as pushed),4,3.7388669646375488
+Linear model (as pushed),5,4.642787790232283
+Linear model (as pushed),6,1.7118122275335284
+Linear model (as pushed),7,4.921714055258888
+Linear model (as pushed),8,5.279575227483671
+Linear model (as pushed),9,4.823689193687859
+Linear model (as pushed),10,3.2320098816338336
+Linear model (as pushed),11,1.678913106356123
+Linear model (as pushed),12,1.4264209518312618
+Linear model (as pushed),13,2.2426086468983915
+Linear model (as pushed),14,0.7032148557046348
+Random forest (as pushed),1,4.2029585000660274
+Random forest (as pushed),2,4.930942723253214
+Random forest (as pushed),3,3.019009194895722
+Random forest (as pushed),4,3.0605696729338647
+Random forest (as pushed),5,3.851247098948518
+Random forest (as pushed),6,1.8602659710443816
+Random forest (as pushed),7,2.866380856123488
+Random forest (as pushed),8,3.587690467993627
+Random forest (as pushed),9,4.033406810254878
+Random forest (as pushed),10,2.910678845076062
+Random forest (as pushed),11,1.596728219275039
+Random forest (as pushed),12,1.4903816214067263
+Random forest (as pushed),13,2.5451244366431927
+Random forest (as pushed),14,0.7186345953568182
 "Baseline: same hour, last 2 yrs",1,4.10922619047619
 "Baseline: same hour, last 2 yrs",2,5.26875
 "Baseline: same hour, last 2 yrs",3,3.741666666666667

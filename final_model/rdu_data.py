@@ -1,6 +1,6 @@
 """RDU hourly data for both final models, with a hard cutoff at 12am Sep 17 2026 (Raleigh time).
 
-Both final models (Lexie's random forest, Burak's two-stage linear model) use ONLY RDU's own observations
+Both final models (the random forest, the two-stage linear model) use ONLY RDU's own observations
 from cleaned_data/rdu_51_clean.csv.  Everything at or after CUTOFF is dropped as soon as the file is read.
 """
 import numpy as np

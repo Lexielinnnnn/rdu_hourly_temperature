@@ -1,4 +1,4 @@
-"""Burak's MOS model: ECMWF forecast + ridge-regression correction (from nwp_mos.ipynb, branch `burak`).
+"""The MOS model: ECMWF forecast + ridge-regression correction (from nwp_mos.ipynb).
 
 Model Output Statistics (MOS): a linear regression that corrects a weather model's raw forecast for one station.
   - Input weather model: ECMWF IFS HRES 12 UTC runs (nwp_data/ifs_12z_rdu.csv, from fetch_ifs_runs.py).

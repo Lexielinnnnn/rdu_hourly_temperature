@@ -1,4 +1,4 @@
-# Sam's work: data sources, features, leakage protection (branch `sam-teshome`)
+# Data sources, features, leakage protection (branch `sam-teshome`)
 
 Project 1: predict hourly RDU temperature for 12am Sep 17 to 11pm Sep 30 2026 using only data from before Sep 17.
 Required: 1 linear regression + 1 other model. Full plan, numbers and task split are in `PLAN.md`;
@@ -101,8 +101,8 @@ and scored on the real Sep 17-30 hours. The real data downloaded ends Sep 30 at 
 
 | Model | MAE (C) | RMSE (C) | R2 | Bias (C) |
 |---|---|---|---|---|
-| Lexie's random forest (as pushed) | 3.00 | 3.67 | 0.59 | -0.10 |
-| Burak's linear model (as pushed) | 3.33 | 4.05 | 0.50 | -0.20 |
+| Random forest (as pushed, latest) | 3.00 | 3.64 | 0.59 | -0.62 |
+| Linear model (as pushed) | 3.33 | 4.05 | 0.50 | -0.20 |
 | Ridge linear regression (ours) | 3.69 | 4.56 | 0.36 | +0.89 |
 | KNN (ours) | 3.72 | 4.57 | 0.36 | +0.71 |
 | Baseline: repeat last 24 h | 4.06 | 4.96 | 0.25 | +1.36 |

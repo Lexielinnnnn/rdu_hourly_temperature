@@ -80,7 +80,7 @@ Owners are suggestions; adjust to taste.
 
 ### Lexie (existing RF/data cleaning + writeup + slides)
 - **Mon**: fix `clean_data.ipynb` (nearest-:51 rule, fill gaps) and re-export the cleaned RDU file; rerun `random_forest.ipynb` on the new data as an extra model; start the writeup (problem, data pipeline, how course topics were applied: baselines, bias-variance, regularization, time-series CV, KNN scaling).
-- **Tue**: build slides (inputs, pipeline, features, models, evaluation approach, performance, what did not work); draft the 2-4 page writeup; integrate Burak's and Sam's figures.
+- **Tue**: build slides (inputs, pipeline, features, models, evaluation approach, performance, what did not work); draft the 2-4 page writeup; integrate the figures.
 
 ### Wed Oct 7 (all): final run from a clean clone, README with run order, proofread. Slides and writeup must be in our own words (AI is allowed only for code).
 

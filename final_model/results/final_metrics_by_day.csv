@@ -1,32 +1,32 @@
 model,day,MAE_C
-"Random forest (Lexie's, fixed)",1,3.6276105469686137
-"Random forest (Lexie's, fixed)",2,4.445970677606998
-"Random forest (Lexie's, fixed)",3,3.0293040109403315
-"Random forest (Lexie's, fixed)",4,3.0488862367455973
-"Random forest (Lexie's, fixed)",5,3.5429533170200327
-"Random forest (Lexie's, fixed)",6,1.293214696440007
-"Random forest (Lexie's, fixed)",7,5.949458931334751
-"Random forest (Lexie's, fixed)",8,6.520292264668083
-"Random forest (Lexie's, fixed)",9,6.266125598001419
-"Random forest (Lexie's, fixed)",10,4.667037061277678
-"Random forest (Lexie's, fixed)",11,2.7819290840979
-"Random forest (Lexie's, fixed)",12,2.482084950640211
-"Random forest (Lexie's, fixed)",13,0.5948214325372617
-"Random forest (Lexie's, fixed)",14,2.4537239232699037
-Linear (Burak's two-stage),1,2.735358864906905
-Linear (Burak's two-stage),2,4.552169528034446
-Linear (Burak's two-stage),3,3.575578548012993
-Linear (Burak's two-stage),4,3.761854136609022
-Linear (Burak's two-stage),5,4.646342017863293
-Linear (Burak's two-stage),6,1.7122320417749337
-Linear (Burak's two-stage),7,4.93412592610181
-Linear (Burak's two-stage),8,5.294103027785344
-Linear (Burak's two-stage),9,4.838557717037427
-Linear (Burak's two-stage),10,3.2415768374780565
-Linear (Burak's two-stage),11,1.6835765366332767
-Linear (Burak's two-stage),12,1.4257253934580065
-Linear (Burak's two-stage),13,2.2320002622251223
-Linear (Burak's two-stage),14,0.6954202555574591
+Random forest (fixed),1,3.6276105469686137
+Random forest (fixed),2,4.445970677606998
+Random forest (fixed),3,3.0293040109403315
+Random forest (fixed),4,3.0488862367455973
+Random forest (fixed),5,3.5429533170200327
+Random forest (fixed),6,1.293214696440007
+Random forest (fixed),7,5.949458931334751
+Random forest (fixed),8,6.520292264668083
+Random forest (fixed),9,6.266125598001419
+Random forest (fixed),10,4.667037061277678
+Random forest (fixed),11,2.7819290840979
+Random forest (fixed),12,2.482084950640211
+Random forest (fixed),13,0.5948214325372617
+Random forest (fixed),14,2.4537239232699037
+Linear (two-stage),1,2.735358864906905
+Linear (two-stage),2,4.552169528034446
+Linear (two-stage),3,3.575578548012993
+Linear (two-stage),4,3.761854136609022
+Linear (two-stage),5,4.646342017863293
+Linear (two-stage),6,1.7122320417749337
+Linear (two-stage),7,4.93412592610181
+Linear (two-stage),8,5.294103027785344
+Linear (two-stage),9,4.838557717037427
+Linear (two-stage),10,3.2415768374780565
+Linear (two-stage),11,1.6835765366332767
+Linear (two-stage),12,1.4257253934580065
+Linear (two-stage),13,2.2320002622251223
+Linear (two-stage),14,0.6954202555574591
 Average of the two,1,3.181484705937759
 Average of the two,2,4.499070102820721
 Average of the two,3,3.3024412794766618
@@ -41,48 +41,48 @@ Average of the two,11,2.1882708464746172
 Average of the two,12,1.8910324727955226
 Average of the two,13,1.2796399156804912
 Average of the two,14,1.1428362053314516
-"Random forest (Lexie, latest push)",1,4.2029585000660274
-"Random forest (Lexie, latest push)",2,4.930942723253214
-"Random forest (Lexie, latest push)",3,3.019009194895722
-"Random forest (Lexie, latest push)",4,3.0605696729338647
-"Random forest (Lexie, latest push)",5,3.851247098948518
-"Random forest (Lexie, latest push)",6,1.8602659710443816
-"Random forest (Lexie, latest push)",7,2.866380856123488
-"Random forest (Lexie, latest push)",8,3.587690467993627
-"Random forest (Lexie, latest push)",9,4.033406810254878
-"Random forest (Lexie, latest push)",10,2.910678845076062
-"Random forest (Lexie, latest push)",11,1.596728219275039
-"Random forest (Lexie, latest push)",12,1.4903816214067263
-"Random forest (Lexie, latest push)",13,2.5451244366431927
-"Random forest (Lexie, latest push)",14,0.7186345953568182
-"Random forest (Lexie, original push)",1,4.196270007837181
-"Random forest (Lexie, original push)",2,4.795606043677716
-"Random forest (Lexie, original push)",3,2.724431748746456
-"Random forest (Lexie, original push)",4,2.7736275910441
-"Random forest (Lexie, original push)",5,3.357167810097027
-"Random forest (Lexie, original push)",6,1.3301907145571623
-"Random forest (Lexie, original push)",7,2.8341192177682655
-"Random forest (Lexie, original push)",8,3.84208868968682
-"Random forest (Lexie, original push)",9,4.500031859472948
-"Random forest (Lexie, original push)",10,3.462402467262701
-"Random forest (Lexie, original push)",11,1.9181366283304901
-"Random forest (Lexie, original push)",12,1.921987747820367
-"Random forest (Lexie, original push)",13,1.8525827262168872
-"Random forest (Lexie, original push)",14,1.735178694392045
-"Linear (Burak, as pushed)",1,2.7250797785945906
-"Linear (Burak, as pushed)",2,4.478582035685249
-"Linear (Burak, as pushed)",3,3.522223656746244
-"Linear (Burak, as pushed)",4,3.7388669646375488
-"Linear (Burak, as pushed)",5,4.642787790232283
-"Linear (Burak, as pushed)",6,1.7118122275335284
-"Linear (Burak, as pushed)",7,4.921714055258888
-"Linear (Burak, as pushed)",8,5.279575227483671
-"Linear (Burak, as pushed)",9,4.823689193687859
-"Linear (Burak, as pushed)",10,3.2320098816338336
-"Linear (Burak, as pushed)",11,1.678913106356123
-"Linear (Burak, as pushed)",12,1.4264209518312618
-"Linear (Burak, as pushed)",13,2.2426086468983915
-"Linear (Burak, as pushed)",14,0.7032148557046348
+Random forest (latest push),1,4.2029585000660274
+Random forest (latest push),2,4.930942723253214
+Random forest (latest push),3,3.019009194895722
+Random forest (latest push),4,3.0605696729338647
+Random forest (latest push),5,3.851247098948518
+Random forest (latest push),6,1.8602659710443816
+Random forest (latest push),7,2.866380856123488
+Random forest (latest push),8,3.587690467993627
+Random forest (latest push),9,4.033406810254878
+Random forest (latest push),10,2.910678845076062
+Random forest (latest push),11,1.596728219275039
+Random forest (latest push),12,1.4903816214067263
+Random forest (latest push),13,2.5451244366431927
+Random forest (latest push),14,0.7186345953568182
+Random forest (original push),1,4.196270007837181
+Random forest (original push),2,4.795606043677716
+Random forest (original push),3,2.724431748746456
+Random forest (original push),4,2.7736275910441
+Random forest (original push),5,3.357167810097027
+Random forest (original push),6,1.3301907145571623
+Random forest (original push),7,2.8341192177682655
+Random forest (original push),8,3.84208868968682
+Random forest (original push),9,4.500031859472948
+Random forest (original push),10,3.462402467262701
+Random forest (original push),11,1.9181366283304901
+Random forest (original push),12,1.921987747820367
+Random forest (original push),13,1.8525827262168872
+Random forest (original push),14,1.735178694392045
+"Linear (two-stage, as pushed)",1,2.7250797785945906
+"Linear (two-stage, as pushed)",2,4.478582035685249
+"Linear (two-stage, as pushed)",3,3.522223656746244
+"Linear (two-stage, as pushed)",4,3.7388669646375488
+"Linear (two-stage, as pushed)",5,4.642787790232283
+"Linear (two-stage, as pushed)",6,1.7118122275335284
+"Linear (two-stage, as pushed)",7,4.921714055258888
+"Linear (two-stage, as pushed)",8,5.279575227483671
+"Linear (two-stage, as pushed)",9,4.823689193687859
+"Linear (two-stage, as pushed)",10,3.2320098816338336
+"Linear (two-stage, as pushed)",11,1.678913106356123
+"Linear (two-stage, as pushed)",12,1.4264209518312618
+"Linear (two-stage, as pushed)",13,2.2426086468983915
+"Linear (two-stage, as pushed)",14,0.7032148557046348
 Baseline: Fourier climatology only,1,3.631189723991355
 Baseline: Fourier climatology only,2,5.551261521484551
 Baseline: Fourier climatology only,3,4.293952285565864

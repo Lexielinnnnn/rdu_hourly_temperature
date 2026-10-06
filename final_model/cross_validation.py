@@ -7,8 +7,8 @@ The real Sep 17-30 2026 period is never touched here.
 
 What it produces (final_model/results/):
   cv_rf_depth.csv       random forest: training vs validation error as tree depth grows (validation curve)
-  cv_linear_alpha.csv   Burak's linear model: training vs validation error as the ridge penalty grows
-  cv_linear_groups.csv  Burak's feature-group check (temp / + dew point / + pressure)
+  cv_linear_alpha.csv   Linear model: training vs validation error as the ridge penalty grows
+  cv_linear_groups.csv  Feature-group check (temp / + dew point / + pressure)
   cv_alignment.csv      the random forest fix: training forecasts at local midnight vs UTC midnight (original push)
   cv_model_comparison*.csv, cv_error_by_lead_day.csv, chosen.json
 
@@ -83,12 +83,12 @@ def run_rf(label, align, depth, yr):
 
 
 t0 = time.time()
-# ---------------- Burak's linear model ----------------
+# ---------------- two-stage linear model ----------------
 for yr in YEARS:
     local, utc = fold_origins(yr)
     for gname, groups in GROUPSETS.items():
         m = LM.LinearForecaster(hourly, groups, alpha=1.0).fit(utc[0])
-        record("Linear (Burak)", "groups", gname, yr, m.predict_many(local).ravel(), m.train_error_sample())
+        record("Linear (two-stage)", "groups", gname, yr, m.predict_many(local).ravel(), m.train_error_sample())
         if gname == "temp":
             preds[("Fourier climatology only", "-", yr)] = np.concatenate([m.climatology_only(o) for o in local])
             preds[("Climatology baseline (same hour, +/-7 days)", "-", yr)] = np.concatenate([LM.climatology_baseline(temp_local, o) for o in local])
@@ -101,12 +101,12 @@ for yr in YEARS:
     m = LM.LinearForecaster(hourly, GROUPSETS[best_groups]).fit(utc[0])
     for a in ALPHAS:
         m.set_alpha(a)
-        record("Linear (Burak)", "alpha", a, yr, m.predict_many(local).ravel(), m.train_error_sample())
+        record("Linear (two-stage)", "alpha", a, yr, m.predict_many(local).ravel(), m.train_error_sample())
 df = pd.DataFrame(rows)
 best_alpha = next(a for a in ALPHAS if a == float(df[df.hyper_name == "alpha"].groupby("hyper")["val_mae"].mean().astype(float).idxmin()))
 print(f"linear done in {(time.time() - t0) / 60:.1f} min: groups={best_groups}, alpha={best_alpha}", flush=True)
 
-# ---------------- Lexie's random forest (fixed: local-midnight training) ----------------
+# ---------------- random forest (fixed: local-midnight training) ----------------
 for depth in RF_DEPTHS:
     for yr in YEARS:
         run_rf("RF (fixed)", "local", depth, yr)
@@ -134,8 +134,8 @@ def curve(model, hp, name):
 
 
 curve("RF (fixed)", "max_depth", "cv_rf_depth")
-curve("Linear (Burak)", "alpha", "cv_linear_alpha")
-curve("Linear (Burak)", "groups", "cv_linear_groups")
+curve("Linear (two-stage)", "alpha", "cv_linear_alpha")
+curve("Linear (two-stage)", "groups", "cv_linear_groups")
 al = df[df.model.isin(["RF (fixed)", "RF (original push)"]) & df.hyper.isin([NOTEBOOK_DEPTH, best_depth])].copy()
 al["training forecasts start at"] = np.where(al.model == "RF (fixed)", "local midnight (fixed)", "UTC midnight (original push)")
 ag = al.groupby(["hyper", "training forecasts start at"])[["val_mae", "val_rmse"]].agg(["mean", "std"])
@@ -144,7 +144,7 @@ ag.reset_index().rename(columns={"hyper": "max_depth"}).to_csv("final_model/resu
 
 # model comparison at the chosen settings, same folds and hours for everyone
 series = {
-    "Linear (Burak's two-stage)": lambda yr: preds[("Linear (Burak)", str(best_alpha), yr)],
+    "Linear (two-stage)": lambda yr: preds[("Linear (two-stage)", str(best_alpha), yr)],
     "Random forest (fixed, chosen depth)": lambda yr: preds[("RF (fixed)", str(best_depth), yr)],
     "Random forest (fixed, notebook depth 16)": lambda yr: preds[("RF (fixed)", str(NOTEBOOK_DEPTH), yr)],
     "Random forest (original push, UTC midnight, depth 16)": lambda yr: preds[("RF (original push)", str(NOTEBOOK_DEPTH), yr)],
