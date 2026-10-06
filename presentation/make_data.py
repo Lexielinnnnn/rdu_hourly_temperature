@@ -11,7 +11,7 @@ Writes presentation/data/:
   normal_vs_actual_2026.csv observed temperature vs the climatology "normal", Aug 1 - Sep 30 2026
 
 No model is changed or re-tuned here.  The real Sep 17-30 temperatures come from
-final_model/results/final_forecast_vs_actual.csv (Sam's one-time scoring) and are only compared against forecasts
+final_model/results/final_forecast_vs_actual.csv (the one-time scoring file) and are only compared against forecasts
 that were frozen before scoring (the committed prediction files).  The script asserts that the MOS model rebuilt
 from final_model/mos_model.py reproduces the frozen rdu_mos_predictions.csv.
 """
@@ -95,10 +95,10 @@ win = pd.DataFrame({
     "MOS (ECMWF + station)": frozen,
     "Raw ECMWF": D.nwp_path(mm.CUTOFF, LEAD),
     "Raw ECMWF + climatology after day 11": final.raw_nwp(mm.CUTOFF),
-    "Random forest (Lexie)": by_hour(fva, "Random forest (Lexie, latest push)", 0),
-    "Station-only linear (Burak)": by_hour("rdu_linear_predictions.csv", "predicted_temperature"),
-    "Ridge + alternative data (Sam)": by_hour(sam, "Ridge linear regression (ours)", 0),
-    "KNN analogs (Sam)": by_hour(sam, "KNN (ours)", 0),
+    "Random forest": by_hour(fva, "Random forest (Lexie, latest push)", 0),
+    "Station-only linear": by_hour("rdu_linear_predictions.csv", "predicted_temperature"),
+    "Ridge + alternative data": by_hour(sam, "Ridge linear regression (ours)", 0),
+    "KNN analogs": by_hour(sam, "KNN (ours)", 0),
     "Baseline: same hour, prior years": by_hour(fva, "Baseline: same hour, +/-7 days of prior years", 0),
     "Baseline: climatology (normal)": final.clim.predict(key),
     "Baseline: repeat last 24 h": by_hour(fva, "Baseline: repeat last 24 h", 0),

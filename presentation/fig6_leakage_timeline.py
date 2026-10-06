@@ -40,7 +40,7 @@ ax.text(26.7, -3.4, "Real Sep 17–30 temperatures:\ndownloaded after all models
         ha="center", va="center", fontsize=12.5, color=INK)
 
 ax.text(-1, 6.05, "What our forecast knew, and when", fontsize=19, fontweight="bold", ha="left", va="top", color=INK)
-ax.text(-1, 5.35, "Every input existed before 12am Sep 17. Checked by asserts in code and Sam's \"poison\" tests.",
+ax.text(-1, 5.35, "Every input existed before 12am Sep 17. Checked by asserts and tests that overwrite later data.",
         fontsize=14, ha="left", va="top", color=MUTED)
 ax.text(-1, -2.75, "Other guards:\n• training forecasts only use targets before each test season\n"
                   "• observations clipped at the cutoff when loaded\n• features use only hours before the forecast",

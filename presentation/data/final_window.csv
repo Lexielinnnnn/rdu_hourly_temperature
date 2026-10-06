@@ -1,4 +1,4 @@
-hour_local,actual,MOS (ECMWF + station),Raw ECMWF,Raw ECMWF + climatology after day 11,Random forest (Lexie),Station-only linear (Burak),Ridge + alternative data (Sam),KNN analogs (Sam),"Baseline: same hour, prior years",Baseline: climatology (normal),Baseline: repeat last 24 h
+hour_local,actual,MOS (ECMWF + station),Raw ECMWF,Raw ECMWF + climatology after day 11,Random forest,Station-only linear,Ridge + alternative data,KNN analogs,"Baseline: same hour, prior years",Baseline: climatology (normal),Baseline: repeat last 24 h
 2026-09-17 00:00:00-04:00,20.6,19.44924344466603,20.4,20.4,20.385220332383657,20.663191091992708,20.05835665822568,20.527275000000003,20.039024390243902,19.56056667310532,20.0
 2026-09-17 01:00:00-04:00,20.0,19.26143390686641,19.9,19.9,20.269189989377345,20.512009781650864,19.39998029918612,20.171375,19.651219512195123,19.36604127669386,19.4
 2026-09-17 02:00:00-04:00,18.9,19.179258600975192,19.6,19.6,20.0800955051421,20.07391271825462,19.008526627331825,19.85285,19.23048780487805,18.96360878209215,18.9

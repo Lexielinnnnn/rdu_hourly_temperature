@@ -13,10 +13,10 @@ w = pd.read_csv(DATA / "final_window.csv", index_col=0)
 w.index = pd.to_datetime(w.index, utc=True).tz_convert("America/New_York").tz_localize(None)
 rows = {"MOS (ECMWF + station)": "MOS (ECMWF + correction)",
         "Raw ECMWF + climatology after day 11": "Raw ECMWF",
-        "Random forest (Lexie)": "Random forest (Lexie)",
-        "Station-only linear (Burak)": "Station-only linear (Burak)",
-        "Ridge + alternative data (Sam)": "Ridge + alt. data (Sam)",
-        "KNN analogs (Sam)": "KNN analogs (Sam)",
+        "Random forest": "Random forest",
+        "Station-only linear": "Station-only linear",
+        "Ridge + alternative data": "Ridge + alternative data",
+        "KNN analogs": "KNN analogs",
         "Baseline: same hour, prior years": "Baseline: same hour, prior years"}
 err = w[list(rows)].sub(w["actual"], axis=0).abs()
 daily = err.groupby(w.index.normalize()).mean().T

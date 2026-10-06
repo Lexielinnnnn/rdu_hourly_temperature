@@ -16,7 +16,7 @@ fig, ax = plt.subplots(figsize=(13, 6.6))
 ax.axvspan(11.5, 14.5, color=LIGHT, zorder=0)
 ax.text(11.65, 1.08, "Beyond the ECMWF run:\neveryone uses the normal", color=MUTED, fontsize=12.5, va="bottom")
 order = ["Climatology", "Station-only linear", "Raw ECMWF", "MOS (ECMWF + station)"]
-labels = {"Climatology": "Climatology (normal for the date)", "Station-only linear": "Station-only linear (Burak)",
+labels = {"Climatology": "Climatology (normal for the date)", "Station-only linear": "Station-only linear",
           "Raw ECMWF": "Raw ECMWF", "MOS (ECMWF + station)": "MOS: ECMWF + our correction"}
 for name in order:
     s = by_day[name]
