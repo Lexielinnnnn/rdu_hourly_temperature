@@ -5,3 +5,8 @@ raw_data/sst/
 raw_data/indices/
 __pycache__/
 raw_data/final_truth/
+
+# local / OS files
+nwp_data/runs/
+.DS_Store
+.ipynb_checkpoints/
