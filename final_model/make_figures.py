@@ -64,13 +64,13 @@ fig, ax = plt.subplots(figsize=(11.5, 5.6))
 bars = ax.barh(c["model"], c["mae_mean"], xerr=c["mae_std"], height=0.6, color=[color(n) for n in c["model"]],
                error_kw=dict(ecolor=MUTED, lw=1.2, capsize=3))
 for b, n in zip(bars, c["model"]):
-    if "as pushed" in n:
+    if "original push" in n:
         b.set_hatch("//"); b.set_edgecolor("white")
 for i, (v, sd) in enumerate(zip(c["mae_mean"], c["mae_std"])):
     ax.text(v + sd + 0.05, i, f"{v:.2f}", va="center", color=INK, fontsize=12, fontweight="bold")
 ax.set_xlim(0, c["mae_mean"].max() + c["mae_std"].max() + 0.8); ax.grid(axis="y", visible=False)
 ax.set_xlabel("Validation MAE (°C): mean of 4 yearly folds ±1 std"); bar_title(fig, "Cross-validation: final candidates vs baselines")
-footnote(fig, "Hatched = random forest trained the way the notebook was pushed (forecasts at UTC midnight).")
+footnote(fig, "Hatched = random forest trained the way the notebook was first pushed (UTC-midnight forecasts, before Lexie's fix).")
 save(fig, "fig_cv_model_comparison.png", top=0.93)
 
 # ---- the random forest alignment fix ----
@@ -78,7 +78,7 @@ a = c[c["model"].str.startswith("Random forest")].sort_values("model")
 fig, ax = plt.subplots(figsize=(11, 3.8))
 bars = ax.barh(a["model"], a["mae_mean"], xerr=a["mae_std"], height=0.55, color=ORANGE, error_kw=dict(ecolor=MUTED, lw=1.2, capsize=3))
 for b, n in zip(bars, a["model"]):
-    if "as pushed" in n:
+    if "original push" in n:
         b.set_hatch("//"); b.set_edgecolor("white"); b.set_facecolor(GREY)
 for i, (v, sd) in enumerate(zip(a["mae_mean"], a["mae_std"])):
     ax.text(v + sd + 0.03, i, f"{v:.3f}", va="center", color=INK, fontsize=12, fontweight="bold")

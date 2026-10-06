@@ -45,8 +45,13 @@ P["Average of the two"] = (P["Random forest (Lexie's, fixed)"] + P["Linear (Bura
 
 # reference rows: the models exactly as pushed to GitHub, and baselines
 ref = {}
-if Path("rdu_random_forest_predictions.csv").exists():
-    ref["Random forest (as pushed)"] = load_pred("rdu_random_forest_predictions.csv")
+if Path("rdu_random_forest_predictions.csv").exists():      # Lexie's latest push (d29c7ed: local-midnight fix, depth 16)
+    ref["Random forest (Lexie, latest push)"] = load_pred("rdu_random_forest_predictions.csv")
+try:                                                       # her first push (854e0d9: UTC-midnight training)
+    ref["Random forest (Lexie, original push)"] = load_pred(subprocess.run(
+        ["git", "show", "854e0d9:rdu_random_forest_predictions.csv"], capture_output=True, text=True, check=True).stdout, True)
+except Exception as e:
+    print("original random forest predictions not available:", e)
 try:
     ref["Linear (Burak, as pushed)"] = load_pred(subprocess.run(["git", "show", "origin/burak:rdu_linear_predictions.csv"],
                                                                 capture_output=True, text=True, check=True).stdout, True)
@@ -87,13 +92,13 @@ mm = m.sort_values("MAE_C", ascending=False)
 fig, ax = plt.subplots(figsize=(11.5, 6))
 bars = ax.barh(mm["model"], mm["MAE_C"], color=[col(n) for n in mm["model"]], height=0.6)
 for b, n in zip(bars, mm["model"]):
-    if "as pushed" in n:
+    if "push" in n:
         b.set_hatch("//"); b.set_edgecolor("white")
 for i, (v, f_) in enumerate(zip(mm["MAE_C"], mm["MAE_F"])):
     ax.text(v + 0.03, i, f"{v:.2f} °C  ({f_:.2f} °F)", va="center", color=INK, fontsize=12, fontweight="bold")
 ax.set_xlim(0, mm["MAE_C"].max() + 1.3); ax.grid(axis="y", visible=False)
 ax.set_xlabel("Mean absolute error on the real Sep 17-30 2026 hours"); bar_title(fig, "Final test: our two models vs baselines")
-footnote(fig, "Hatched = the models exactly as pushed to GitHub. Real observations used only for this one final scoring.")
+footnote(fig, "Hatched = teammates' models exactly as pushed to GitHub. Real observations used only for final scoring.")
 save(fig, "fig_final_model_comparison.png", top=0.93)
 
 fig, ax = plt.subplots(figsize=(13, 5.4))

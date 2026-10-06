@@ -11,10 +11,10 @@ Linear (Burak's two-stage),2025,2.8297704350808384,3.4316707047036386
 "Random forest (fixed, notebook depth 16)",2023,2.938310134279682,3.7115143691918764
 "Random forest (fixed, notebook depth 16)",2024,3.074355396598953,3.7424713253234487
 "Random forest (fixed, notebook depth 16)",2025,2.927572912410396,3.6127980504823163
-"Random forest (as pushed, UTC midnight, depth 16)",2022,3.486968135449759,4.36593614420882
-"Random forest (as pushed, UTC midnight, depth 16)",2023,2.9039010506817173,3.663075632599364
-"Random forest (as pushed, UTC midnight, depth 16)",2024,3.106716097949447,3.787694140250055
-"Random forest (as pushed, UTC midnight, depth 16)",2025,2.9666137571459936,3.643155739914835
+"Random forest (original push, UTC midnight, depth 16)",2022,3.486968135449759,4.36593614420882
+"Random forest (original push, UTC midnight, depth 16)",2023,2.9039010506817173,3.663075632599364
+"Random forest (original push, UTC midnight, depth 16)",2024,3.106716097949447,3.787694140250055
+"Random forest (original push, UTC midnight, depth 16)",2025,2.9666137571459936,3.643155739914835
 Fourier climatology only,2022,2.8477275637734523,3.598542037266182
 Fourier climatology only,2023,2.545783179178008,3.200261010758503
 Fourier climatology only,2024,3.075777453964589,3.6262187685470955

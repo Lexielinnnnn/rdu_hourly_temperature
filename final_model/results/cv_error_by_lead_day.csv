@@ -55,20 +55,20 @@ Persistence (repeat last 24 h),11,3.3000000000000003
 Persistence (repeat last 24 h),12,3.1191746351283345
 Persistence (repeat last 24 h),13,3.362855691056911
 Persistence (repeat last 24 h),14,3.488374433819829
-"Random forest (as pushed, UTC midnight, depth 16)",1,2.9802202326100096
-"Random forest (as pushed, UTC midnight, depth 16)",2,2.866404405237436
-"Random forest (as pushed, UTC midnight, depth 16)",3,3.092921902229104
-"Random forest (as pushed, UTC midnight, depth 16)",4,3.084088156284444
-"Random forest (as pushed, UTC midnight, depth 16)",5,3.0205239448569348
-"Random forest (as pushed, UTC midnight, depth 16)",6,3.20274752444704
-"Random forest (as pushed, UTC midnight, depth 16)",7,3.1673893339385235
-"Random forest (as pushed, UTC midnight, depth 16)",8,3.095610326819232
-"Random forest (as pushed, UTC midnight, depth 16)",9,3.2039491225731997
-"Random forest (as pushed, UTC midnight, depth 16)",10,3.1254508455129493
-"Random forest (as pushed, UTC midnight, depth 16)",11,3.1360065780327675
-"Random forest (as pushed, UTC midnight, depth 16)",12,3.267291603963536
-"Random forest (as pushed, UTC midnight, depth 16)",13,3.184439721068938
-"Random forest (as pushed, UTC midnight, depth 16)",14,3.2346278712044834
+"Random forest (original push, UTC midnight, depth 16)",1,2.9802202326100096
+"Random forest (original push, UTC midnight, depth 16)",2,2.866404405237436
+"Random forest (original push, UTC midnight, depth 16)",3,3.092921902229104
+"Random forest (original push, UTC midnight, depth 16)",4,3.084088156284444
+"Random forest (original push, UTC midnight, depth 16)",5,3.0205239448569348
+"Random forest (original push, UTC midnight, depth 16)",6,3.20274752444704
+"Random forest (original push, UTC midnight, depth 16)",7,3.1673893339385235
+"Random forest (original push, UTC midnight, depth 16)",8,3.095610326819232
+"Random forest (original push, UTC midnight, depth 16)",9,3.2039491225731997
+"Random forest (original push, UTC midnight, depth 16)",10,3.1254508455129493
+"Random forest (original push, UTC midnight, depth 16)",11,3.1360065780327675
+"Random forest (original push, UTC midnight, depth 16)",12,3.267291603963536
+"Random forest (original push, UTC midnight, depth 16)",13,3.184439721068938
+"Random forest (original push, UTC midnight, depth 16)",14,3.2346278712044834
 "Random forest (fixed, chosen depth)",1,2.9573878569661955
 "Random forest (fixed, chosen depth)",2,2.9081263135945736
 "Random forest (fixed, chosen depth)",3,2.986111501845828
