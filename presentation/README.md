@@ -28,5 +28,6 @@ grey, actual temperatures black. Shared style in `style.py` (same validated pale
 | `fig6_leakage_timeline.png` | What the forecast knew and when, around the Sep 17 cutoff | Data pipeline / leakage |
 | `fig7_normal_vs_actual.png` | Temperature = normal for the date + a departure (Aug–Sep 2026) | Problem / features |
 | `fig8_error_heatmap.png` | Each model's error on each day of the real window | Performance / limitations |
+| `fig9_r2_skill.png` | R² on the real window, and how much each model adds beyond the normal for the date (R² is 0.43 for the normal alone) | Performance / Evaluation approach |
 
 Figures are 200 dpi PNGs sized for a 16:9 slide.
